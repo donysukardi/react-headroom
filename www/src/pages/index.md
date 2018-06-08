@@ -23,7 +23,63 @@ Here's an example:
   {({ getRootProps, height, state, shouldHide }) => (
     <div style={{
       height,
-      marginBottom: rhythm(1)
+    }}>
+      <header
+        {...getRootProps()}
+        style={{
+          background: 'rgb(57, 111, 176)',
+          boxShadow: '1px 1px 1px rgba(0,0,0,0.25)',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+          position: 'relative',
+          transform: 'translateY(0)',
+          ...(shouldHide ? {
+            transform: 'translateY(-100%)',
+          } : {}),
+          ...(state !== 'unfixed' ? {
+            position: 'fixed',
+            transition: 'all .2s ease-in-out',
+          } : {
+          }),
+        }}
+      >
+        <h1>You can put anything you'd like inside the Headroom Component</h1>
+      </header>
+    </div>
+  )}
+</Headroom>
+```
+
+Another example using `styled-components`:
+
+```javascript
+
+const Header = styled.header`
+  background: rgb(57, 111, 176);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  position: relative;
+  transform: translateY(0);
+
+  ${props => props.state !== 'unfixed' && `
+    position: fixed;
+    transition: all .2s ease-in-out;
+  `}
+
+  ${props => props.shouldHide && `
+    transform: translateY(-100%)
+  `}
+`
+
+<Headroom>
+  {({ getRootProps, height, state, shouldHide }) => (
+    <div style={{
+      height,
     }}>
       <Header
         {...getRootProps({

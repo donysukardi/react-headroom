@@ -18,17 +18,8 @@ const Header = styled.header`
   transform: translateY(0);
 
   ${props => props.state !== 'unfixed' && `
+    position: fixed;
     transition: all .2s ease-in-out;
-  `}
-
-  ${props => props.state === 'unpinned' && `
-    position: fixed;
-    transform: translateY(-100%);
-  `}
-
-  ${props => props.state === 'pinned' && `
-    position: fixed;
-    transform: translateY(0);
   `}
 
   ${props => props.shouldHide && `
@@ -48,10 +39,12 @@ const Layout = ({ data }) => (
         onUnpin={() => console.log('unpinned')}
       >
         {({ getRootProps, height, state, shouldHide }) => (
-          <div style={{
-            height,
-            marginBottom: rhythm(1)
-          }}>
+          <div
+            style={{
+              height,
+              marginBottom: rhythm(1),
+            }}
+          >
             <Header
               {...getRootProps({
                 refKey: 'innerRef',

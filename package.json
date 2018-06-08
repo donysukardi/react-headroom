@@ -9,6 +9,7 @@
   "dependencies": {
     "prop-types": "^15.5.8",
     "raf": "^3.3.0",
+    "react-measure": "^2.0.2",
     "shallowequal": "^0.2.2"
   },
   "devDependencies": {

@@ -1,9 +1,17 @@
-const config = {
+module.exports = {
   siteMetadata: {
-    title: 'React Headroom',
+    title: 'Gatsby Default Starter',
   },
-  linkPrefix: '/react-headroom',
-  sources: `${__dirname}/pages/`,
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: "markdown-pages",
+      },
+    },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-styled-components`,
+  ],
 }
-
-export default config

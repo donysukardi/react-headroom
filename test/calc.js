@@ -7,7 +7,7 @@ let propDefaults = {}
 describe('shouldUpdate', () => {
   beforeEach(() => {
     propDefaults =
-      { disableInlineStyles: false,
+      {
       disable: false,
       upTolerance: 0,
       downTolerance: 0,

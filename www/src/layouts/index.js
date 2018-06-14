@@ -1,31 +1,11 @@
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
 import Helmet from 'react-helmet'
 import { Container } from 'react-responsive-grid'
-
+import Header from './Header'
 import { rhythm } from '../utils/typography'
 import Headroom from '../../../src/index'
-
-const Header = styled.header`
-  background: rgb(57, 111, 176);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  position: relative;
-  transform: translateY(0);
-
-  ${props => props.state !== 'unfixed' && `
-    position: fixed;
-    transition: all .2s ease-in-out;
-  `}
-
-  ${props => props.shouldHide && `
-    transform: translateY(-100%)
-  `}
-`
 
 const Layout = ({ data }) => (
   <div>
@@ -38,7 +18,7 @@ const Layout = ({ data }) => (
         onPin={() => console.log('pinned')}
         onUnpin={() => console.log('unpinned')}
       >
-        {({ getRootProps, height, state, shouldHide }) => (
+        {({ getRootProps, height, state }) => (
           <div
             style={{
               height,
@@ -50,7 +30,6 @@ const Layout = ({ data }) => (
                 refKey: 'innerRef',
               })}
               state={state}
-              shouldHide={shouldHide}
             >
               <Container style={{ maxWidth: 960, padding: `${rhythm(1/2)}` }}>
                 <h1
@@ -105,3 +84,4 @@ export const query = graphql`
     }
   }
 `
+/* eslint-enable */

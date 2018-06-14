@@ -40,7 +40,6 @@ export default class Headroom extends Component {
     this.state = {
       state: 'unfixed',
       height: 0,
-      shouldHide: false,
     }
   }
 
@@ -147,21 +146,13 @@ export default class Headroom extends Component {
 
   unpin = () => {
     this.props.onUnpin()
-
-    this.setState({
-      shouldHide: true,
-    }, () => {
-      setTimeout(() => {
-        this.setState({ state: 'unpinned' })
-      }, 0)
-    })
+    this.setState({ state: 'unpinned' })
   }
 
   pin = () => {
     this.props.onPin()
 
     this.setState({
-      shouldHide: false,
       state: 'pinned',
     })
   }
@@ -170,7 +161,6 @@ export default class Headroom extends Component {
     this.props.onUnfix()
 
     this.setState({
-      shouldHide: false,
       state: 'unfixed',
     })
   }

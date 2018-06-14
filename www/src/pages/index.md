@@ -20,7 +20,7 @@ Here's an example:
 
 ```javascript
 <Headroom>
-  {({ getRootProps, height, state, shouldHide }) => (
+  {({ getRootProps, height, state }) => (
     <div style={{
       height,
     }}>
@@ -35,14 +35,12 @@ Here's an example:
           zIndex: 1,
           position: 'relative',
           transform: 'translateY(0)',
-          ...(shouldHide ? {
+          ...(state === 'unpinned' ? {
             transform: 'translateY(-100%)',
           } : {}),
           ...(state !== 'unfixed' ? {
             position: 'fixed',
-            transition: 'all .2s ease-in-out',
-          } : {
-          }),
+          } : {}),
         }}
       >
         <h1>You can put anything you'd like inside the Headroom Component</h1>
